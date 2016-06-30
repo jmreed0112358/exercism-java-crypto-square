@@ -22,9 +22,11 @@ public class Crypto
 		this.generateNormalizedPlaintext( rawInput );
 		this.computeSquareSize( );
 		this.generatePlaintextSegments( );
-		//this.cipherText = this.generateCiphertext( false );
-		//this.normalizedCipherText = this.generateCiphertext( true );
+		this.cipherText = this.generateCiphertext( false );
+		this.normalizedCipherText = this.generateCiphertext( true );
 	}
+	
+	// Public getters.
 	
 	public String getNormalizedPlaintext() {
 		return this.normalizedPlaintext;
@@ -39,12 +41,14 @@ public class Crypto
 	}
 	
 	public String getCipherText() {
-		throw new NotImplementedException();
+		return this.cipherText;
 	}
 	
 	public String getNormalizedCipherText() {
-		throw new NotImplementedException();
+		return this.normalizedCipherText;
 	}
+	
+	// Private state generation functions.
 	
 	private void generateNormalizedPlaintext(String rawInput) {
 		if ( rawInput.isEmpty( ) ) {
@@ -79,6 +83,20 @@ public class Crypto
 	}
 	
 	private String generateCiphertext( boolean normalized ) {
-		throw new NotImplementedException();
+		StringBuilder sb = new StringBuilder();
+		
+		for ( int i = 0 ; i < this.squareSize ; i++ ) {
+			for ( int j = 0 ; j < this.plaintextSegments.size( ) ; j++ ) {
+				if ( i < this.plaintextSegments.get( j ).length( ) ) {
+					sb.append( this.plaintextSegments.get( j ).charAt( i ) );
+				}
+			}
+			
+			if ( normalized && i != this.squareSize - 1) {
+				sb.append( ' ' );
+			}
+		}
+		
+		return sb.toString( );
 	}
 }
