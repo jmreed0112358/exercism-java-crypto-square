@@ -19,7 +19,7 @@ public class Crypto
 		
 		// Generate all state.
 		this.generateNormalizedPlaintext( rawInput );
-		//this.computeSquareSize( );
+		this.computeSquareSize( );
 		//this.generatePlaintextSegments( );
 		//this.cipherText = this.generateCiphertext( false );
 		//this.normalizedCipherText = this.generateCiphertext( true );
@@ -30,7 +30,7 @@ public class Crypto
 	}
 	
 	public Integer getSquareSize() {
-		throw new NotImplementedException();
+		return this.squareSize;
 	}
 	
 	public List<String> getPlaintextSegments() {
@@ -61,7 +61,8 @@ public class Crypto
 	}
 	
 	private void computeSquareSize() {
-		throw new NotImplementedException();
+		Integer inputLength = this.normalizedPlaintext.length( );
+		this.squareSize = (int) Math.ceil( Math.sqrt( inputLength.doubleValue( ) ) );
 	}
 	
 	private void generatePlaintextSegments( ) {
