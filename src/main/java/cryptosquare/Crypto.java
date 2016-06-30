@@ -1,5 +1,6 @@
 package cryptosquare;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import exceptions.NotImplementedException;
@@ -20,7 +21,7 @@ public class Crypto
 		// Generate all state.
 		this.generateNormalizedPlaintext( rawInput );
 		this.computeSquareSize( );
-		//this.generatePlaintextSegments( );
+		this.generatePlaintextSegments( );
 		//this.cipherText = this.generateCiphertext( false );
 		//this.normalizedCipherText = this.generateCiphertext( true );
 	}
@@ -34,7 +35,7 @@ public class Crypto
 	}
 	
 	public List<String> getPlaintextSegments() {
-		throw new NotImplementedException();
+		return this.plaintextSegments;
 	}
 	
 	public String getCipherText() {
@@ -66,7 +67,15 @@ public class Crypto
 	}
 	
 	private void generatePlaintextSegments( ) {
-		throw new NotImplementedException();
+		this.plaintextSegments = new ArrayList<String>();
+		
+		// http://stackoverflow.com/questions/9276639/java-how-to-split-a-string-by-a-number-of-characters
+		// Credit: Guillaume Polet.
+		int index = 0;
+		while ( index < this.normalizedPlaintext.length( ) ) {
+			this.plaintextSegments.add(  this.normalizedPlaintext.substring( index, Math.min( index + this.squareSize, this.normalizedPlaintext.length( ) ) ) );
+			index += this.squareSize;
+		}
 	}
 	
 	private String generateCiphertext( boolean normalized ) {
