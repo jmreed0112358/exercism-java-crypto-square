@@ -1,3 +1,4 @@
+package cryptosquare;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -34,7 +35,7 @@ public class CryptoSquareTest {
     @Test
     public void smallestSquareSizeIs2() {
         Crypto crypto = new Crypto("1234");
-        int expectedOutput = 2;
+        Integer expectedOutput = 2;
 
         assertEquals(expectedOutput, crypto.getSquareSize());
     }
@@ -42,7 +43,7 @@ public class CryptoSquareTest {
     @Test
     public void sizeOfTextWhoseLengthIsPerfectSquareIsItsSquareRoot() {
         Crypto crypto = new Crypto("123456789");
-        int expectedOutput = 3;
+        Integer expectedOutput = 3;
 
         assertEquals(expectedOutput, crypto.getSquareSize());
     }
@@ -50,7 +51,7 @@ public class CryptoSquareTest {
     @Test
     public void sizeOfTextWhoseLengthIsNoPerfectSquareIsNextBiggestSquareRoot() {
         Crypto crypto = new Crypto("123456789abc");
-        int expectedOutput = 4;
+        Integer expectedOutput = 4;
 
         assertEquals(expectedOutput, crypto.getSquareSize());
     }
@@ -58,7 +59,7 @@ public class CryptoSquareTest {
     @Test
     public void sizeIsDeterminedByNormalizedText() {
         Crypto crypto = new Crypto("Oh hey, this is nuts!");
-        int expectedOutput = 4;
+        Integer expectedOutput = 4;
 
         assertEquals(expectedOutput, crypto.getSquareSize());
     }
