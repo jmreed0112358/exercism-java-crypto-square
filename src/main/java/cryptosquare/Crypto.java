@@ -16,6 +16,13 @@ public class Crypto
 		if ( rawInput == null ) {
 			throw new NullPointerException();
 		}
+		
+		// Generate all state.
+		this.generateNormalizedPlaintext( rawInput );
+		//this.computeSquareSize( );
+		//this.generatePlaintextSegments( );
+		//this.cipherText = this.generateCiphertext( false );
+		//this.normalizedCipherText = this.generateCiphertext( true );
 	}
 	
 	public String getNormalizedPlaintext() {
@@ -23,23 +30,34 @@ public class Crypto
 	}
 	
 	public Integer getSquareSize() {
-		return this.squareSize;
+		throw new NotImplementedException();
 	}
 	
 	public List<String> getPlaintextSegments() {
-		return this.plaintextSegments;
+		throw new NotImplementedException();
 	}
 	
 	public String getCipherText() {
-		return this.cipherText;
+		throw new NotImplementedException();
 	}
 	
 	public String getNormalizedCipherText() {
-		return normalizedCipherText;
+		throw new NotImplementedException();
 	}
 	
 	private void generateNormalizedPlaintext(String rawInput) {
-		throw new NotImplementedException();
+		if ( rawInput.isEmpty( ) ) {
+			this.normalizedPlaintext = rawInput;
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		for ( int i = 0 ; i < rawInput.length( ) ; i++ ) {
+			if ( Character.isLetterOrDigit( rawInput.charAt( i ) ) ) {
+				sb.append( rawInput.charAt( i ) );
+			}
+		}
+		
+		this.normalizedPlaintext = sb.toString( ).toLowerCase( );
 	}
 	
 	private void computeSquareSize() {
@@ -50,7 +68,7 @@ public class Crypto
 		throw new NotImplementedException();
 	}
 	
-	private void generateCiphertext( boolean normalized ) {
+	private String generateCiphertext( boolean normalized ) {
 		throw new NotImplementedException();
 	}
 }
