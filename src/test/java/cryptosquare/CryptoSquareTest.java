@@ -1,13 +1,25 @@
 package cryptosquare;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-
 public class CryptoSquareTest {
 
+	@Test
+	public void test_constructor_InvalidInput_NullString_ThrowsException() {
+		try {
+			Crypto crypto = new Crypto( null );
+			fail("Supposed to catch NullPointerException");
+		} catch ( NullPointerException npe ) {
+			
+		} catch ( Exception e ) {
+			fail("Expected to NullPointerException");
+		}
+	}
+	
     @Test
     public void strangeCharactersAreStrippedDuringNormalization() {
         Crypto crypto = new Crypto("s#$%^&plunk");
