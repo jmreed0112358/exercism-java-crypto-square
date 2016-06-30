@@ -6,31 +6,51 @@ import exceptions.NotImplementedException;
 
 public class Crypto
 {
+	private String normalizedPlaintext;
+	private Integer squareSize;
+	private List<String> plaintextSegments;
+	private String cipherText;
+	private String normalizedCipherText;
+	
 	public Crypto( String rawInput ) {
-		throw new NotImplementedException();
+		if ( rawInput == null ) {
+			throw new NullPointerException();
+		}
 	}
 	
 	public String getNormalizedPlaintext() {
-		throw new NotImplementedException();
+		return this.normalizedPlaintext;
 	}
 	
 	public Integer getSquareSize() {
-		throw new NotImplementedException();
+		return this.squareSize;
 	}
 	
 	public List<String> getPlaintextSegments() {
-		throw new NotImplementedException();
+		return this.plaintextSegments;
 	}
 	
 	public String getCipherText() {
-		throw new NotImplementedException();
+		return this.cipherText;
 	}
 	
 	public String getNormalizedCipherText() {
+		return normalizedCipherText;
+	}
+	
+	private void generateNormalizedPlaintext(String rawInput) {
 		throw new NotImplementedException();
 	}
 	
-	private String normalize( String input ) {
+	private void computeSquareSize() {
+		throw new NotImplementedException();
+	}
+	
+	private void generatePlaintextSegments( ) {
+		throw new NotImplementedException();
+	}
+	
+	private void generateCiphertext( boolean normalized ) {
 		throw new NotImplementedException();
 	}
 }
