@@ -50,6 +50,10 @@ public class Crypto
 	
 	// Private state generation functions.
 	
+	/**
+	 * Remove everything save for letters and digits.  Final string should be all lower case.
+	 * @param rawInput
+	 */
 	private void generateNormalizedPlaintext(String rawInput) {
 		if ( rawInput.isEmpty( ) ) {
 			this.normalizedPlaintext = rawInput;
@@ -65,11 +69,19 @@ public class Crypto
 		this.normalizedPlaintext = sb.toString( ).toLowerCase( );
 	}
 	
+	/**
+	 * Computes the square size of the normalized plain text.
+	 * Takes the ceiling of the square root of the normalized plain text length.
+	 */
 	private void computeSquareSize() {
 		Integer inputLength = this.normalizedPlaintext.length( );
 		this.squareSize = (int) Math.ceil( Math.sqrt( inputLength.doubleValue( ) ) );
 	}
 	
+	/**
+	 * Generates plaintext segments.
+	 * Each segment is a String of length equal to square size.
+	 */
 	private void generatePlaintextSegments( ) {
 		this.plaintextSegments = new ArrayList<String>();
 		
@@ -82,6 +94,12 @@ public class Crypto
 		}
 	}
 	
+	/**
+	 * Generates a cipertext string by walking the plaintext segments.
+	 * See README.md for a description of this crypto algorithm.
+	 * @param normalized
+	 * @return
+	 */
 	private String generateCiphertext( boolean normalized ) {
 		StringBuilder sb = new StringBuilder();
 		
